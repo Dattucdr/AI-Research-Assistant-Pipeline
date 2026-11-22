@@ -1,7 +1,7 @@
-"""Shared utilities used across agents.
+"""Shared Gemini utilities used across agents.
 
-The most important helper here is :func:`call_llm_json`, which wraps the OpenAI
-SDK with the JSON-parsing-and-retry behaviour required by the spec's
+The most important helper here is :func:`call_llm_json`, which wraps Gemini
+calls with the JSON-parsing-and-retry behaviour required by the spec's
 error-handling section: if the model returns non-JSON, we retry once with an
 explicit reminder, then fall back to a caller-supplied default.
 """
@@ -11,23 +11,27 @@ import json
 import re
 from typing import Any, Optional
 
-from openai import OpenAI
+from google import genai
+from google.genai import types
 
 from utils.logger import get_logger
 
 log = get_logger("helpers")
 
-DEFAULT_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o")
+DEFAULT_MODEL = "gemini-2.5-flash"
 
-# A single shared client. Reads OPENAI_API_KEY from the environment.
-_client: Optional[OpenAI] = None
+# A single shared client. Reads GEMINI_API_KEY from the environment.
+_client: Optional[genai.Client] = None
 
 
-def get_client() -> OpenAI:
-    """Lazily construct and cache the OpenAI client."""
+def get_client() -> genai.Client:
+    """Lazily construct and cache the Gemini client."""
     global _client
     if _client is None:
-        _client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        api_key = os.getenv("GEMINI_API_KEY")
+        if not api_key:
+            raise ValueError("GEMINI_API_KEY is not set")
+        _client = genai.Client(api_key=api_key)
     return _client
 
 
@@ -74,23 +78,22 @@ def call_llm_text(
 ) -> str:
     """Call the LLM and return the raw text of the response.
 
-    When ``json_mode`` is True, OpenAI's native JSON response format is requested
-    so the model is constrained to emit a valid JSON object.
+    When ``json_mode`` is True, Gemini's JSON response format is requested.
     """
     client = get_client()
-    kwargs = dict(
-        model=model or DEFAULT_MODEL,
-        max_tokens=max_tokens,
+    config = types.GenerateContentConfig(
+        system_instruction=system,
+        max_output_tokens=max_tokens,
         temperature=temperature,
-        messages=[
-            {"role": "system", "content": system},
-            {"role": "user", "content": user},
-        ],
     )
     if json_mode:
-        kwargs["response_format"] = {"type": "json_object"}
-    resp = client.chat.completions.create(**kwargs)
-    return (resp.choices[0].message.content or "").strip()
+        config.response_mime_type = "application/json"
+    resp = client.models.generate_content(
+        model=model or os.getenv("GEMINI_MODEL", DEFAULT_MODEL),
+        contents=user,
+        config=config,
+    )
+    return (resp.text or "").strip()
 
 
 def call_llm_json(

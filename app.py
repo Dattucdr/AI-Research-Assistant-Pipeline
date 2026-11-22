@@ -73,7 +73,7 @@ def fresh_state(query: str) -> dict:
 # --------------------------------------------------------------------------- #
 st.set_page_config(page_title="AI Research Assistant", page_icon="🔬", layout="wide")
 st.title("🔬 AI Research Assistant")
-st.caption("Multi-Agent Pipeline · LangGraph + OpenAI + Tool Calling + Memory")
+st.caption("Multi-Agent Pipeline · LangGraph + Gemini + Tool Calling + Memory")
 
 # Session-state defaults
 if "report" not in st.session_state:

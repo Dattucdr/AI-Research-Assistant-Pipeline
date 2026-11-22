@@ -10,7 +10,7 @@
   </a>
   <img alt="Python" src="https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white">
   <img alt="LangGraph" src="https://img.shields.io/badge/LangGraph-StateGraph-1C3C3C?logo=langchain&logoColor=white">
-  <img alt="OpenAI" src="https://img.shields.io/badge/OpenAI-gpt--4o-412991?logo=openai&logoColor=white">
+  <img alt="Google Gemini" src="https://img.shields.io/badge/Google%20Gemini-2.5--flash-4285F4?logo=googlegemini&logoColor=white">
   <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-SSE-009688?logo=fastapi&logoColor=white">
   <img alt="ChromaDB" src="https://img.shields.io/badge/ChromaDB-vector%20memory-FF6F61">
   <img alt="License" src="https://img.shields.io/badge/License-MIT-green.svg">
@@ -182,15 +182,15 @@ uvicorn server:app --reload       # open http://localhost:8000
 
 | Key | Required? | Get it at |
 |---|---|---|
-| `OPENAI_API_KEY` | ✅ Required — every agent calls the LLM | <https://platform.openai.com/api-keys> |
+| `GEMINI_API_KEY` | ✅ Required — every agent calls Gemini | <https://aistudio.google.com/app/apikey> |
 | `TAVILY_API_KEY` | ✅ Required — web search | <https://app.tavily.com> (free tier) |
 | `LANGCHAIN_API_KEY` | ⚪ Optional — LangSmith tracing | <https://smith.langchain.com> |
 
 Fill them into `.env`:
 
 ```ini
-OPENAI_API_KEY=sk-...
-OPENAI_MODEL=gpt-4o
+GEMINI_API_KEY=your-gemini-api-key
+GEMINI_MODEL=gemini-2.5-flash
 TAVILY_API_KEY=tvly-...
 LANGCHAIN_API_KEY=...
 LANGCHAIN_TRACING_V2=true
@@ -198,6 +198,16 @@ LANGCHAIN_PROJECT=ai-research-assistant
 ```
 
 > ⚠️ **Never commit `.env`.** It's already in `.gitignore`.
+
+---
+
+## ☁️ Deploying on Render
+
+1. Push this repository to GitHub.
+2. In Render, choose **New → Blueprint**, connect the repository, and deploy using `render.yaml`.
+3. When prompted, provide `GEMINI_API_KEY` and `TAVILY_API_KEY` as Render environment secrets. Do not commit these values.
+
+The Blueprint deploys the Streamlit app on Render's free plan. Free instances may sleep when idle, and their local filesystem is temporary, so ChromaDB research history is not durable across restarts or redeploys.
 
 ---
 
@@ -285,7 +295,7 @@ python ad_qa_main.py sample_ads.csv
 # writes output/ad_qa_report.md and output/ad_qa_report.csv
 ```
 
-Input is a CSV of ad records (`ad_id`, `platform`, `headline`, `body_copy`, `cta`, `destination_url`, `image_url`). Uses the same `OPENAI_API_KEY` from `.env` for the copy and policy checks — the link and image checks work without it.
+Input is a CSV of ad records (`ad_id`, `platform`, `headline`, `body_copy`, `cta`, `destination_url`, `image_url`). Uses the same `GEMINI_API_KEY` from `.env` for the copy and policy checks — the link and image checks work without it.
 
 > ⚠️ `ad_qa/config.py`'s platform specs, character limits, and banned-term list are a starting point, not verified against current platform policy pages — customize and cross-check before trusting this for real ad submissions.
 
@@ -315,7 +325,7 @@ With `LANGCHAIN_TRACING_V2=true`, every run is traced in LangSmith automatically
 
 ## 🧰 Tech Stack
 
-`LangGraph` · `OpenAI gpt-4o` · `Tavily` · `ChromaDB` · `sentence-transformers` · `FastAPI` · `Uvicorn` · `Vanilla JS` · `BeautifulSoup` · `LangSmith`
+`LangGraph` · `Google Gemini 2.5 Flash` · `Tavily` · `ChromaDB` · `sentence-transformers` · `FastAPI` · `Uvicorn` · `Vanilla JS` · `BeautifulSoup` · `LangSmith`
 
 ---
 
@@ -339,4 +349,4 @@ Contributions are welcome! See **[CONTRIBUTING.md](CONTRIBUTING.md)** and our **
 
 Released under the **[MIT License](LICENSE)** © 2026 Ayush Das.
 
-<div align="center"><sub>Built with LangGraph, OpenAI, and a healthy retry loop. ⭐ Star the repo if it helped you.</sub></div>
+<div align="center"><sub>Built with LangGraph, Gemini, and a healthy retry loop. ⭐ Star the repo if it helped you.</sub></div>

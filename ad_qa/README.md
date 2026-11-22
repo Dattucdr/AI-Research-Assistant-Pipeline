@@ -24,7 +24,7 @@ python ad_qa_main.py sample_ads.csv
 ```
 
 Writes `output/ad_qa_report.md` and `output/ad_qa_report.csv`. Needs
-`OPENAI_API_KEY` set (same `.env` as the research pipeline) for the copy and
+`GEMINI_API_KEY` set (same `.env` as the research pipeline) for the copy and
 policy checks -- the link and image checks work without it.
 
 ## Input format

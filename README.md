@@ -5,7 +5,7 @@
 ### An autonomous **multi-agent** system that researches any topic end-to-end — then remembers what it learned.
 
 <p>
-  <a href="https://ayushdas4890-ai-research-assistant-pipeline-app-1sjuvf.streamlit.app/" target="_blank">
+  <a href="https://dattu-ai-research-agent.streamlit.app/" target="_blank">
     <img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Streamlit App">
   </a>
   <img alt="Python" src="https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white">
@@ -17,7 +17,7 @@
 </p>
 
 <p>
-  <a href="https://ayushdas4890-ai-research-assistant-pipeline-app-1sjuvf.streamlit.app/"><b>Live Demo</b></a> ·
+  <a href="https://dattu-ai-research-agent.streamlit.app/"><b>Live Demo</b></a> ·
   <a href="#-quick-start"><b>Quick Start</b></a> ·
   <a href="#-architecture"><b>Architecture</b></a> ·
   <a href="#-the-five-agents"><b>Agents</b></a> ·

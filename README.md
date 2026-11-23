@@ -162,7 +162,7 @@ AI-Research-Assistant-Pipeline/
 ## ⚡ Quick Start
 
 ```bash
-git clone https://github.com/AyushDas4890/AI-Research-Assistant-Pipeline.git
+git clone https://github.com/Dattucdr/AI-Research-Assistant-Pipeline.git
 cd AI-Research-Assistant-Pipeline
 
 python -m venv venv

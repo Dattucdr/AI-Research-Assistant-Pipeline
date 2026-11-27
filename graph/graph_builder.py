@@ -16,7 +16,7 @@ from agents.reader import run_reader
 from agents.critic import run_critic
 from agents.writer import run_writer
 
-
+ 
 def build_graph():
     """Build and compile the research agent graph."""
     graph = StateGraph(ResearchState)

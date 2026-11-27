@@ -5,7 +5,7 @@ imports memory operations from a stable ``memory.long_term`` namespace. Keeping
 the ChromaDB mechanics in ``tools`` and the semantic API here means callers
 (agents, main, app) never touch the vector store directly.
 """
-
+ 
 from tools.memory_tool import (
     retrieve_past_research,
     save_research,

@@ -21,7 +21,7 @@ def run_searcher(state: ResearchState) -> dict:
     gap_notes = state.get("gap_notes", "") or ""
     retry_count = state.get("retry_count", 0)
     is_retry = retry_count > 0 and bool(gap_notes.strip())
-
+ 
     # Build the list of queries to run this pass.
     queries = list(sub_questions)
     if is_retry:

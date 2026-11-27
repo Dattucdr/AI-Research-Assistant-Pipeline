@@ -92,7 +92,7 @@ def save_research(query: str, report: str, session_id: str) -> None:
     except Exception as exc:
         log.warning("ChromaDB save failed (report not persisted): %s", exc)
 
-
+ 
 def list_sessions() -> List[dict]:
     """Return metadata for every saved session, newest first.
 

@@ -4,7 +4,7 @@ import httpx
 from bs4 import BeautifulSoup
 
 from utils.logger import get_logger
-
+ 
 log = get_logger("fetch_tool")
 
 

@@ -1,7 +1,7 @@
 const $ = (s) => document.querySelector(s);
 const AGENTS = ["planner", "searcher", "reader", "critic", "writer"];
 const ICON = { planner: "🧭", searcher: "🔎", reader: "📖", critic: "🧪", writer: "✍️" };
-
+ 
 let currentReport = "";
 let currentTitle = "";
 let es = null;

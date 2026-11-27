@@ -44,7 +44,7 @@ def summarize_insights(insights: List[Dict], max_chars: int = 6000) -> str:
     if len(text) > max_chars:
         text = text[:max_chars] + "\n…[truncated]"
     return text
-
+ 
 
 def summarize_sources(insights: List[Dict]) -> str:
     """Build a deduplicated Markdown source list from insights."""

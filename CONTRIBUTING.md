@@ -1,7 +1,7 @@
 # Contributing
 
 Thanks for your interest in improving the AI Research Assistant Pipeline! 🎉
-
+ 
 ## Getting set up
 
 ```bash

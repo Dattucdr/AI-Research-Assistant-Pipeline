@@ -164,7 +164,7 @@ if run and query.strip():
 
     st.session_state.agent_log = collected_log
     st.session_state.run_time = time.time() - start
-
+ 
 # --------------------------------------------------------------------------- #
 # Results
 # --------------------------------------------------------------------------- #

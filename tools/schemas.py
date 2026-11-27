@@ -6,7 +6,7 @@ directly from the agent code for deterministic control flow, but exposing the
 schemas here keeps the tool contracts in one place and makes it trivial to hand
 the same definitions to the LLM for native function/tool calling.
 """
-
+ 
 SEARCH_WEB_SCHEMA = {
     "name": "search_web",
     "description": (

@@ -66,7 +66,7 @@ def _extract_json(text: str) -> Any:
                 continue
     raise json.JSONDecodeError("No JSON object found", text, 0)
 
-
+ 
 def call_llm_text(
     system: str,
     user: str,

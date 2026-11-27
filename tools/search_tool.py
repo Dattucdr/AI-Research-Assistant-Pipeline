@@ -8,7 +8,7 @@ from utils.logger import get_logger
 
 log = get_logger("search_tool")
 
-
+ 
 def search_web(query: str, max_results: int = 5) -> list[dict]:
     """Search the web using Tavily.
 

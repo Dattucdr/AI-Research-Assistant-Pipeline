@@ -3,7 +3,7 @@
 from graph.state import ResearchState
 
 MAX_RETRIES = 2
-
+ 
 
 def route_after_critic(state: ResearchState) -> str:
     """Decide where to go after the Critic runs.

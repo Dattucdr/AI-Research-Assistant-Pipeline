@@ -57,7 +57,7 @@ def run_critic(state: ResearchState) -> dict:
     except Exception as exc:
         log.error("Critic failed: %s", exc)
         gaps_found, gap_notes, coverage = False, "", 0.0
-
+ 
     # We are about to consume a retry if we loop, so the new count reflects this
     # pass. Force-stop once we've already retried MAX_RETRIES times.
     new_retry_count = retry_count + 1

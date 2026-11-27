@@ -75,7 +75,7 @@ def run_writer(state: ResearchState) -> dict:
             ],
             "error": f"writer: {exc}",
         }
-
+ 
     # Persist to long-term memory.
     save_research(query, report, session_id)
 

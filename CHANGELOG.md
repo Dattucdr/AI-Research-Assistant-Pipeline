@@ -4,7 +4,7 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [1.0.0] - 2026-06-04
-
+ 
 ### Added
 - Five-agent LangGraph pipeline: Planner → Searcher → Reader → Critic → Writer.
 - Conditional critic retry loop (max 2) with gap-targeted re-search.

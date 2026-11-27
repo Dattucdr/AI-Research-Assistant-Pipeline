@@ -1,5 +1,5 @@
 """CLI entry point for the Ad QA pipeline.
-
+ d
 Usage:
     python ad_qa_main.py path/to/ads.csv
     python ad_qa_main.py path/to/ads.csv --out-dir output

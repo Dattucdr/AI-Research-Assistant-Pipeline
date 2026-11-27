@@ -12,7 +12,7 @@ source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 cp .env.example .env            # then add your keys
 ```
-
+ 
 ## Development workflow
 
 1. **Fork** the repo and create a feature branch: `git checkout -b feature/my-change`
